@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1657059234 "c:/Users/enriq/OneDrive/Escritorio/LatexVSCGit/main.tex" "build/main.pdf" "main" 1657059234
+["pdflatex"] 1657059890 "c:/Users/enriq/OneDrive/Escritorio/LatexVSCGit/main.tex" "build/main.pdf" "main" 1657059890
   "C:/Users/enriq/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1657058455 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/enriq/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1652758034 10243109 ac40a1cf4181a6c4258437f4a940b6b0 ""
   "D:/MikText/Nueva carpeta/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233955448 1004 54797486969f23fa377b128694d548df ""
@@ -172,10 +172,10 @@
   "D:/MikText/Nueva carpeta/tex/latex/pgfplots/pgfplots.sty" 1621075461 4904 ee78b44e85d6fccf08cd99370557481e ""
   "D:/MikText/Nueva carpeta/tex/latex/tikz-3dplot/tikz-3dplot.sty" 1326313801 32488 0c21c95f67b6fe919f5892b4d3ac7813 ""
   "D:/MikText/Nueva carpeta/tex/latex/xcolor/xcolor.sty" 1636288472 56029 3f7889dab51d620aa43177c391b7b190 ""
-  "build/main.aux" 1657059234 34 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "build/main.aux" 1657059890 34 3985256e7290058c681f74d7a3565a19 "pdflatex"
   "build/main.toc" 0 -1 0 "pdflatex"
-  "c:/Users/enriq/OneDrive/Escritorio/LatexVSCGit/main.tex" 1657059181 15349 9c778f439dfa2e8a506ff4a63a232755 ""
-  "main.tex" 1657059181 15349 9c778f439dfa2e8a506ff4a63a232755 ""
+  "c:/Users/enriq/OneDrive/Escritorio/LatexVSCGit/main.tex" 1657059882 15349 9c778f439dfa2e8a506ff4a63a232755 ""
+  "main.tex" 1657059882 15349 9c778f439dfa2e8a506ff4a63a232755 ""
   "main.toc" 0 -1 0 ""
   (generated)
   "build/main.aux"
