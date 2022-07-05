@@ -1,0 +1,490 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{pgf-pie}
+\usetikzlibrary{patterns}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{math}
+%\usepackage[active,tightpage]{preview}
+%\PreviewEnvironment{tikzpicture}
+%\setlength\PreviewBorder{1pt}
+\pgfplotsset{compat=1.12}
+\usepgfplotslibrary{polar}
+
+\title{Gráficas }
+
+\geometry{top=1cm}
+
+\definecolor{crema}{HTML}{FFE3B3} 
+\definecolor{mostaza}{HTML}{FFC172} 
+\definecolor{verde}{HTML}{63CAA7} 
+\definecolor{azul}{HTML}{26798e}
+\definecolor{rojo}{HTML}{DD4470}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Gráficas 2D}
+
+\subsection{Polinomial}
+%\eqref{gra:fx12d}
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \begin{axis}[xmin=-5,xmax=5,ymin=-5,ymax=5,axis  lines=center,
+        xlabel=$x$, xlabel style={at={(ticklabel* cs:1.05)}},
+        ylabel=$y$, ylabel style={at={(ticklabel* cs:1.05)}},
+        grid]
+            \addplot[red!80!white,thick,samples=200
+            ,domain=-3:3]{x^4-0.5*x^3-2*x^2-x+1};
+            \node at (axis cs:3,3){$F(x)$};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Función $F(x) = x^4 - 0.5x^3 - 2x^2 - x +1$}
+    \label{gra:fx12d}
+\end{figure}
+
+\centering
+% \begin{tikzpicture}
+% \draw[very thin,color=gray] (-0.1,-1.1) grid (7,1.1);
+% \draw[->] (-0.2,0) -- (7.5,0) node[right] {$x$};
+% \draw[->] (0,-1.2) -- (0,1.5) node[above] {$y$};
+% \draw[blue,thick,->] plot[domain=0:7] (\x,{sin(\x r)}) 
+% 	node[right] {$h(x) = \sin x$};
+% \draw[red,thick,->] plot[domain=0:6.35] (\x,{cos(\x r)}) 
+% 	node[above] {$g(x) = \cos x$};
+% \end{tikzpicture}
+
+\bigskip
+\begin{tikzpicture}
+\begin{axis}[
+scale = 1.2,
+xmin = 0, xmax = 10,
+ymin = 0, ymax = 10,
+axis lines* = left,
+xtick = {0}, ytick = \empty,
+axis on top,
+clip = false,
+]
+% Supply and Demand Curves
+\addplot[color=blue, very thick] coordinates {(1, 9) (9, 1)};
+\addplot[color=red, very thick] coordinates{(3, 1) (6, 9)};
+
+% Quantity and Price Lines
+\addplot[color=black, dashed, thick] coordinates {(0, 5.36) (4.64, 5.36) (4.64, 0)};
+\addplot[color=black, dashed, thick] coordinates {(0, 2) (10, 2)};
+\addplot[color=black, dashed, thick] coordinates {(3.38, 2) (3.38, 0)};
+\addplot[color=black, dashed, thick] coordinates {(8, 2) (8, 0)};
+
+% Coordinate points
+\addplot[color=black, mark=*, only marks, mark size=3pt] coordinates {(3.38, 2) (4.64, 5.36) (8,2)};
+
+% Labels
+\node [right] at (10, 2) {Ceiling};
+
+\node [right] at (4.7, 5.4) {$E$};
+\node [above left] at (3.38, 2) {$E^{\prime}$};
+
+\node [above] at (current axis.above origin) {Rent, $P$};
+\node [right] at (current axis.right of origin) {Apartments, $Q$};
+
+\node [right] at (9, 1) {$D$};
+\node [right] at (6, 9) {$S$};
+
+\node [left] at (0, 5.36) {$P_E$};
+\node [left] at (0, 2) {$P_c$};
+
+\node [below] at (4.64, 0) {$Q_E$};
+\node [below] at (3.38, 0) {$Q_s$};
+\node [below] at (8, 0) {$Q_d$};
+
+\draw[|-|] (3.38, -1) to (4.64, -1);
+\node [below] at (4, -1) {Apartments lost};
+\draw[|-|] (3.38, -2) to (8, -2);
+\node [below] at (5.7, -2) {Shortage};
+\end{axis}
+\end{tikzpicture}
+
+\bigskip
+\begin{tikzpicture}
+\begin{axis}[
+scale = 1.2,
+xmin = 0, xmax = 10.5,
+ymin = 0.01, ymax = 10.5,
+axis lines* = left,
+xtick = {0,1,2,3,4,5,6,7,8,9,10},
+ytick = {0,1,2,3,4,5,6,7,8,9,10},
+grid = both,
+minor tick num = 1,
+grid style = solid,
+minor grid style = dotted,
+clip = false,
+]
+% Supply and demand curves
+\addplot[color = blue, very thick] coordinates {(1, 9) (9, 1)};
+\addplot[color = red, very thick] coordinates {(1, 1) (9, 9)};
+
+% Dashed lines
+\addplot[color = black, dashed, thick] coordinates {(0, 5) (5, 5) (5, 0)};
+
+% Coordinate points
+\addplot[color = black, mark = *, only marks, mark size = 3pt] coordinates {(5, 5)};
+
+% Labels
+\node [right] at (current axis.right of origin) {Widgets, $Q$};
+\node [above] at (current axis.above origin) {Price, $P$};
+\node [above = 5pt, fill = white] at (5, 5.2) {$E$};
+\node [left = 10pt] at (0, 5) {$P_E$};
+\node [below = 10pt] at (5, 0) {$Q_E$};
+\node [right, fill = white] at (9, 1) {$D$};
+\node [right, fill = white] at (9, 9) {$S$};
+\end{axis}
+\end{tikzpicture}
+
+% \begin{tikzpicture}[scale=0.8]
+% \draw[blue,thick,->] (-2.5,0)--(5,0) node[right,below] {$x$}; % Eje x
+% % Enumeración del eje x
+% \foreach \x/\xtext in {-2/-2, -1/-1, 1/1, 2/2, 3/3, 4/4} 
+% \draw[shift={(\x,0)},blue] (0pt,2pt)--(0pt,-2pt) node[below] {$\xtext$};
+% %
+% % Enumeración del eje y
+% \foreach \y/\ytext in {-1/-1, 1/1, 2/2, 3/3, 4/4} 
+% \draw[shift={(0,\y)},blue] (2pt,0pt)--(-2pt,0pt) node[left] {$\ytext$};
+% \draw[blue,thick,->] (0,-2)--(0,4.25) node[left,above] {$y$}; % Eje y
+% %
+% \node[below] at (-0.25,0){$O$};
+% \draw[red,thick,<->] (-1,4) -- (4,-1); 
+% \node[color=red,right] at (4,-1) {$x+y=3$};
+% %
+% \draw[red,thick,<->] (-1,-2) -- (4,3); 
+% \node[color=red,right] at (4,3) {$x-y=1$};
+% %
+% \draw[fill=black] (2,1) circle (2pt);
+% \end{tikzpicture}
+
+\newpage
+\bigskip
+\subsection{Elipse}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \begin{axis}[
+        grid,
+        xlabel = $x$,
+        axis x line=center,
+        ylabel = $y$,
+        axis y line=center,
+        xmin = 0,
+        xmax = 8,
+        ymin = 0,
+        ymax = 4.5
+        ]
+        
+        \addplot[
+        domain=0:360,
+        samples=100,
+        thick,
+        red,
+        ]({3+3*cos(x)},{2+2*sin(x)});
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Elipse}
+    \label{gra:elipse}
+\end{figure}
+
+\subsection{Hipérbola}
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \begin{axis}[
+        grid,
+        xlabel = $x$,
+        axis x line=center,
+        ylabel = $y$,
+        axis y line=center,
+        xmin = 0,
+        xmax = 8,
+        ymin = 0,
+        ymax = 4.5
+        ]
+        
+        \addplot[
+        domain=-89:89,
+        samples=100,
+        thick,
+        red,
+        ]({3+1/cos(x)},{2+1*tan(x)});
+        
+        \addplot[
+        domain=91:269,
+        samples=100,
+        thick,
+        red,
+        ]({3+1/cos(x)},{2+1*tan(x)});
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Hipérbola}
+    \label{gra:hiperbola}
+\end{figure}
+
+\newpage
+
+\subsection{Área bajo la Curva}
+% \begin{figure}[h!]
+%     \centering
+%     \begin{tikzpicture}
+%         \begin{axis}[
+%         width=10cm,
+%         height=6cm,
+%         xmin=-1,
+%         xmax=5,
+%         ymin=0,
+%         ymax=3.5,
+%         xlabel=$x$,
+%         ylabel=$y$,
+%         xlabel style={at={(ticklabel* cs:1.05)}},
+%         ylabel style={at={(ticklabel* cs:1.05)}},
+%         axis lines=center
+%         ]
+%         \addplot[verde,thick,samples=200,domain=-1:5]{1+sqrt(x)};
+%         \filldraw[fill=azul!20,draw=black] (0,0) -- plot [domain=-1:4] (\x,{1+sqrt(\x)}) -- (4,0) -- cycle;
+%         \end{axis}
+%     \end{tikzpicture}
+%     \caption{Área bajo la Curva}
+%     \label{gra:abc}
+% \end{figure}
+
+\subsection{Área entre Dos Curvas}
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+        width=10cm,
+        height=6cm,
+        xmin=-0.5,
+        xmax=2.5,
+        ymin=-0.3,
+        ymax=1.2,
+        xlabel=$x$,
+        ylabel=$y$,
+        xlabel style={at={(ticklabel* cs:1.05)}},
+        ylabel style={at={(ticklabel* cs:1.05)}},
+        axis lines=center
+        ]
+        
+        \filldraw[draw=black,fill=cyan!20]
+        plot [smooth,domain=0:1] (\x,{2*(\x) - (\x)^2}) --
+        plot [smooth,domain=1:0] (\x,\x^4) -- cycle;
+        
+        \addplot[verde,thick,samples=200,domain=-0.2:2]{2*(\x) - (\x)^2};
+        \addplot[verde,thick,samples=200,domain=-0.2:1.1]{(\x)^4};
+        
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Área entre dos Curvas}
+    \label{gra:abc}
+\end{figure}
+
+\bigskip
+\begin{tikzpicture}
+\begin{axis}[
+scale = 1.2,
+xmin = 0, xmax = 10,
+ymin = 0, ymax = 10,
+axis lines* = left,
+xtick = {0}, ytick = \empty,
+clip = false,
+]
+% Colouring areas
+\fill[teal, opacity = 0.1] (0, 3.53) -- (4.14, 3.53) -- (4.14, 5.96) -- (0, 5.96);
+\fill[violet, opacity = 0.1] (0, 3.53) -- (4.14, 3.53) -- (4.14, 3) -- (0, 3);
+\fill[teal, opacity = 0.25] (4.14, 3.53)-- (5.05, 3.53) -- (4.14, 5.96);
+\fill[violet, opacity = 0.25] (4.14, 3)-- (5.05, 3.53) -- (4.14, 3.53);
+
+% Supply and demand curves
+\addplot[color = blue, very thick] coordinates {(3,9) (6,1)};
+\addplot[color = red, very thick] coordinates {(1,1) (9,6)};
+\addplot[color = red, opacity = 0.3, very thick] coordinates {(1,4) (9,9)};
+
+% Dashed lines
+\addplot[color = black, dashed, thick] coordinates {(0, 5.96) (4.14, 5.96) (4.14, 0)};
+\addplot[color = black, dashed, thick] coordinates {(0, 3.53) (5.05, 3.53) (5.05, 0)};
+\addplot[color = black, dashed, thick] coordinates {(0, 3) (4.1, 3)};
+
+% Coordinate points
+\addplot[color = black, mark = *, only marks, mark size = 3pt] coordinates {(4.14, 5.96) (5.05, 3.53)};
+
+% Labels
+\node [right] at (current axis.right of origin){Gasoline, $Q$};
+\node [above] at (current axis.above origin) {Price, $P$};
+\node [above] at (5.25, 3.6) {$E$};
+\node [above] at (4.35, 6.1) {$E^\prime$};
+\node [right] at (6, 1) {$D$};
+\node [right] at (9, 6) {$S$};
+\node [right] at (9, 9) {$S^\prime$};
+\node [left] at (0, 3.7) {$P_E$};
+\node [left] at (0, 2.8) {$P_S$};
+\node [left] at (0, 5.96) {$P^\prime$};
+\node [below] at (5.05, 0) {$Q_E$};
+\node [below] at (4.14, 0) {$Q^\prime$};
+\node [above] at (2, 4.7) {$A$};
+\node [above] at (1, 2) {$B$};
+\node [above] at (4.5, 3.5) {$C$};
+\node [above] at (6.2, 2.2) {$F$};
+
+% Arrows
+\draw[-{Triangle[length=4mm, width=2mm]}, red, opacity = 0.3] (8, 5.8) to (8, 7.8);
+\draw[-Triangle] (1.3, 2.4) to [out = 0, in = 270] (2, 3.35);
+\draw[-Triangle] (5.9, 2.6) to [out = 180, in = 270] (4.3, 3.4);
+
+% Dimension lines
+\draw[|-|] (4.14, -1) to (5.05, -1);
+\node [below] at (4.59, -1) {Consumption reduction};
+\draw[|-|] (-1, 5.96) to (-1, 3.8);
+\node [below, align = left] at (-2.3, 6) {Consumer \\ incidence};
+\draw[|-|] (-1, 3.6) to (-1, 2.8);
+\node [below, align = left] at (-2.3, 3.5) {Producer \\ incidence};
+\draw[|-|] (-3.6, 5.96) to (-3.6, 2.8);
+\node [below, align = left] at (-4.2, 4.7) {Tax};
+
+% Legend
+\node [below right, draw, align = left] at (10.5, 10) {
+\fcolorbox{black}{teal!10}{\makebox[\fontcharht\font`X]{$A$}} + \fcolorbox{black}{teal!25}{\makebox[\fontcharht\font`X]{$C$}} : Consumer  \\
+\fcolorbox{black}{violet!10}{\makebox[\fontcharht\font`X]{$B$}} + \fcolorbox{black}{violet!25}{\makebox[\fontcharht\font`X]{$F$}} : Producer \\
+\fcolorbox{black}{teal!10}{\makebox[\fontcharht\font`X]{$A$}} + \fcolorbox{black}{violet!10}{\makebox[\fontcharht\font`X]{$B$}} : Total  \\
+\fcolorbox{black}{teal!25}{\makebox[\fontcharht\font`X]{$C$}} + \fcolorbox{black}{violet!25}{\makebox[\fontcharht\font`X]{$F$}} : Deadweight loss
+};
+\end{axis}
+\end{tikzpicture}
+
+\subsection{Polares}
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[scale=0.7]
+        \begin{polaraxis}
+            \addplot[
+            red,
+            thick,
+            samples=600,
+            domain=0:360
+            ]{2*(1-sin(x))};
+        \end{polaraxis}
+    \end{tikzpicture}
+    
+    \caption{Polar $r=2(1-sin(\theta))$}
+    \label{gra:polar}
+\end{figure}
+
+\subsection{Radial}
+
+\bigskip
+\begin{tikzpicture}[scale=0.5]
+    \coordinate (origin) at (0, 0);
+
+    \foreach[count=\i] \radius/\dim in {4/Proficiency,
+                                        9/Growth,
+                                        1/Ratio,
+                                        7/Duration,
+                                        3/Motivation,
+                                        7/Breadth,
+                                        2/Depth}{
+        \coordinate (\i) at (\i * 360 / 7: \radius);
+        \node (title) at (\i * 360 / 7: 11) {\Huge\dim};
+        \draw (origin) -- (title);
+    }
+
+    \draw [fill=blue!20, opacity=.7] (1)
+                                \foreach \i in {2,...,7}{-- (\i)} --cycle;
+\end{tikzpicture}
+
+\newpage
+\subsection{Pie}
+% \begin{figure}[h!]
+%     \centering
+%     \begin{tikzpicture}[scale=0.8]
+%         \pie[text=legend,style=drop shadow,explode={0,0.5,0,0}]{20/Samsung,21/Huawei,12/Apple,8/Xiaomi,40/otros}
+%     \end{tikzpicture}
+%     \caption{Pie}
+%     \label{gra:pie}
+% \end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \pie[pos={0,0},radius=1]{10/,20/,30/,40/}
+        \pie[pos={2.7,0},radius=1.5]{10/,20/,30/,40/}
+        \pie[pos={6.5,0},radius=2]{10/,20/,30/,40/}
+    \end{tikzpicture}
+    \caption{Multi Pie}
+    \label{gra:mpie}
+\end{figure}
+
+
+\newpage
+\subsection{Diagrama de Barras}
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        \begin{axis}[
+        ybar,
+        x tick label style={/pgf/number format/1000 sep=},
+        enlarge x limits = 0.2,
+        width=12cm,
+        height=7cm,
+        ylabel = Frecuencia,
+        legend style={at={(0.5,-0.15)},anchor=north,legend columns=-1}
+        ]
+            \addplot[azul,fill=azul] plot coordinates {(2014,5)(2015,3)(2016,2)(2017,1)(2018,1)(2019,2)};
+            \addplot[rojo,fill=rojo] plot coordinates {(2014,2)(2015,5)(2016,8)(2017,1)(2018,4)(2019,2)};
+            \addplot[verde,fill=verde] plot coordinates {(2014,4)(2015,2)(2016,4)(2017,5)(2018,6)(2019,5)};
+            \legend{Categoría 1,Categoría 2,Categoría 3}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Diagrama de Barras}
+    \label{gra:Barras}
+\end{figure}
+
+\bigskip
+% \begin{tikzpicture}[scale=0.75]
+% % relleno para la cuadrícula de color amarillo
+% \draw[yellow!10, fill = yellow!10] (0,0) rectangle (7,8); 
+% \draw[red,dotted] (0,0) grid (7,8); 
+% % Primeros escalones normales
+% \draw[blue,thick,fill=blue!25] (0,0) rectangle (1,1);
+% \draw[blue,thick,fill=blue!25] (1,0) rectangle (2,2);
+% \draw[blue,thick,fill=blue!25] (2,0) rectangle (3,3);
+% \draw[blue,thick,fill=blue!25] (3,0) rectangle (4,4);
+% \draw[blue,thick,fill=blue!25] (4,0) rectangle (5,5);
+% \draw[blue,thick,fill=blue!25] (5,0) rectangle (6,6);
+% \draw[blue,thick,fill=blue!25] (6,0) rectangle (7,7); 
+% \draw [->](3,-0.35) -- (0,-0.35);
+% \draw [->](4,-0.35) --(7,-0.35);
+% \draw(-0.15,8) --(-0.55,8); % Para indicar el límite
+% \draw(-0.15,1) --(-0.55,1); % Para indicar el límite
+% \node[below] at (3.5,0) {$n$};
+% \draw [->](-0.35,4) -- (-0.35,1);
+% \draw [->](-0.35,5) --(-0.35,8);
+% \draw(7,-0.15) --(7,-0.55); % Para indicar el límite
+% \draw(0,-0.15) --(0,-0.55); % Para indicar el límite
+% \node[left] at (0,4.5) {$n$};
+% %
+% \draw [->](7.8,3.5) -- (7.8,0);
+% \draw [->](7.8,4.5) --(7.8,8);
+% \node[right] at (7,4) {$n+1$};
+% \draw(7.25,8) --(8.35,8); % Para indicar el límite
+% \draw(7.25,0) --(8.35,0); % Para indicar el límite
+% %
+% \node at (0.5,0.5) {1};
+% \node at (1.5,1) {2};
+% \node at (2.5,1.5) {3};
+% \node at (3.5,2) {4};
+% \node at (4.5,2.5) {$\cdots$};
+% \node at (6.5,3.5) {$n$};
+% \end{tikzpicture}
+	
+\end{document}

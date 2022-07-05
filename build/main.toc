@@ -1,0 +1,11 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Gráficas 2D}{1}{}%
+\contentsline {subsection}{\numberline {1.1}Polinomial}{1}{}%
+\contentsline {subsection}{\numberline {1.2}Elipse}{3}{}%
+\contentsline {subsection}{\numberline {1.3}Hipérbola}{3}{}%
+\contentsline {subsection}{\numberline {1.4}Área bajo la Curva}{4}{}%
+\contentsline {subsection}{\numberline {1.5}Área entre Dos Curvas}{4}{}%
+\contentsline {subsection}{\numberline {1.6}Polares}{5}{}%
+\contentsline {subsection}{\numberline {1.7}Radial}{5}{}%
+\contentsline {subsection}{\numberline {1.8}Pie}{6}{}%
+\contentsline {subsection}{\numberline {1.9}Diagrama de Barras}{7}{}%
